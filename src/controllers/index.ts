@@ -1,1 +1,0 @@
-export { getRoot } from './root';
