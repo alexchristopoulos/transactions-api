@@ -21,7 +21,8 @@
       "routes/*": ["routes/*"],
       "services/*": ["services/*"],
       "types/*": ["types/*"],
-      "utils/*": ["utils/*"]
+      "utils/*": ["utils/*"],
+      "db/*": ["db/*"]
     }
   },
   "exclude": ["node_modules/*", "dist/*"],

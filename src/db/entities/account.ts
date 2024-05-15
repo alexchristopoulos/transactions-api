@@ -1,20 +1,19 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import 'reflect-metadata';
+
+import { Check, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
+@Check('"balance" >= 0')
 export class Account {
   @PrimaryGeneratedColumn({ type: 'bigint' })
-  // @ts-expect-error ignore ts error
-  id: number;
+  id!: number;
 
   @Column({ type: 'number' })
-  // @ts-expect-error ignore ts error
-  balance: number;
+  balance!: number;
 
-  @Column()
-  // @ts-expect-error ignore ts error
-  currency: string;
+  @Column({ type: 'string' })
+  currency!: string;
 
-  @Column()
-  // @ts-expect-error ignore ts error
-  createdAt: Date;
+  @Column({ type: 'string' })
+  createdAt!: Date;
 }

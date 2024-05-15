@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Account } from './account';
@@ -5,24 +7,19 @@ import { Account } from './account';
 @Entity()
 export class Transaction {
   @PrimaryGeneratedColumn({ type: 'bigint' })
-  // @ts-expect-error ignore ts error
-  id: number;
+  id!: number;
 
   @Column({ type: 'bigint' })
   @OneToOne(() => Account)
-  // @ts-expect-error ignore ts error
-  sourceAccount: number;
+  sourceAccount!: number;
 
   @Column({ type: 'bigint' })
   @OneToOne(() => Account)
-  // @ts-expect-error ignore ts error
-  targetAccount: number;
+  targetAccount!: number;
 
-  @Column({ type: "number" })
-  // @ts-expect-error ignore ts error
-  amount: number;
+  @Column({ type: 'number' })
+  amount!: number;
 
   @Column({ type: 'string' })
-  // @ts-expect-error ignore ts error
-  currency: Date;
+  currency!: Date;
 }

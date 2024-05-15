@@ -22,7 +22,13 @@ const aliasFromCompilerOptions = (
 export default defineConfig({
   build: {
     rollupOptions: {
-      external: ['express', 'http', 'express-async-errors', 'joi'],
+      external: [
+        'express',
+        'http',
+        'express-async-errors',
+        'typeorm',
+        'reflect-metadata',
+      ],
     },
     lib: {
       entry: {
