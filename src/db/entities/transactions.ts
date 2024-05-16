@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 import { Check, Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Account } from './account';

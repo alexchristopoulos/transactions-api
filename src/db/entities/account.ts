@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 import { Check, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
