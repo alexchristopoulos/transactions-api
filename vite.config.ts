@@ -27,7 +27,7 @@ export default defineConfig({
         'http',
         'express-async-errors',
         'typeorm',
-        'reflect-metadata',
+        'reflect-metadata'
       ],
     },
     lib: {

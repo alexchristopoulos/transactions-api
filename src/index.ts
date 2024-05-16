@@ -12,10 +12,14 @@ const server = createServer(app);
 server.listen(port);
 
 server.on('listening', () => console.log(`Listening at port ${port}`));
+
 datasource
   .initialize()
   .then(() => {
     console.log('connected to db');
   })
-  .catch(() => {});
+  .catch((err) => { 
+    console.error("failed to connect to db", err)
+    process.exit(1)});
+
 export default server;

@@ -1,25 +1,28 @@
 import 'reflect-metadata';
 
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Check, Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Account } from './account';
 
 @Entity()
+@Check('"amount" > 0')
 export class Transaction {
-  @PrimaryGeneratedColumn({ type: 'bigint' })
-  id!: number;
+  @PrimaryGeneratedColumn("uuid")
+  id!: string;
 
-  @Column({ type: 'bigint' })
-  @OneToOne(() => Account)
-  sourceAccount!: number;
+  @Column({
+    type: "uuid"
+  })
+  @OneToOne(() => Account, (account => account.id))
+  sourceAccount!: string;
 
-  @Column({ type: 'bigint' })
-  @OneToOne(() => Account)
-  targetAccount!: number;
 
-  @Column({ type: 'number' })
+  @Column({
+    type: "uuid"
+  })
+  @OneToOne(() => Account, (account => account.id))
+  targetAccount!: string;
+
+  @Column({ type: "bigint" })
   amount!: number;
-
-  @Column({ type: 'string' })
-  currency!: Date;
 }

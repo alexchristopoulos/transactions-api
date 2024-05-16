@@ -5,15 +5,12 @@ import { Check, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 @Check('"balance" >= 0')
 export class Account {
-  @PrimaryGeneratedColumn({ type: 'bigint' })
-  id!: number;
+  @PrimaryGeneratedColumn("uuid")
+  id!: string;
 
-  @Column({ type: 'number' })
+  @Column({ type: 'bigint' })
   balance!: number;
 
-  @Column({ type: 'string' })
-  currency!: string;
-
-  @Column({ type: 'string' })
+  @Column({ type: 'date' })
   createdAt!: Date;
 }
