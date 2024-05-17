@@ -1,13 +1,21 @@
-
 import { datasource } from 'db/dataSource';
 import { Account } from 'db/entities/account';
 import { Transaction } from 'db/entities/transactions';
 
-export async function transferMoney(sourceAccountId: string, targetAccountId: string, amount: number) {
-    
-    const {manager} = datasource;
-  
-    await manager.transaction(async transactionalEntityManager => {
+type TransferMoneyParams = {
+  sourceAccountId: string;
+  targetAccountId: string;
+  amount: number;
+};
+
+export const transferMoney = async ({
+  amount,
+  sourceAccountId,
+  targetAccountId,
+}: TransferMoneyParams) => {
+  const { manager } = datasource;
+
+  await manager.transaction(async (transactionalEntityManager) => {
     // Lock source account row
     const sourceAccount = await transactionalEntityManager
       .createQueryBuilder(Account, 'account')
@@ -49,4 +57,4 @@ export async function transferMoney(sourceAccountId: string, targetAccountId: st
 
     await transactionalEntityManager.save(transaction);
   });
-}
+};
