@@ -1,4 +1,4 @@
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { createAccount, getAccount } from 'services/account';
 import { RequestWithBody } from 'utils/request';
 
@@ -7,16 +7,16 @@ export const createAccountController = async (
   res: Response,
 ) => {
   const { balance } = req.body;
-  await createAccount({ balance });
+  const {id, balance: initialBalance} = await createAccount({ balance });
 
-  return res.sendStatus(200);
+  return res.status(200).json({msg: `Created account with id ${id} and initial balance ${initialBalance}`});
 };
 
 export const getAccountController = async (
-  req: RequestWithBody<{ id: string }>,
+  req: Request,
   res: Response,
 ) => {
-  const { id } = req.body;
+  const { id } = req.params;
   const account = await getAccount({ id });
 
   return res.status(200).json(account);

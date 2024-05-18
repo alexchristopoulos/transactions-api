@@ -15,9 +15,9 @@ export const createAccount = async ({balance}: CreateAccountParams) => {
     const account = new Account();
     account.balance = balance;
     
-    await manager.save(account);
+    return await manager.save(account);
 };
 
 export const getAccount = async ({id}: GetAccountParams) =>  await manager.findOne(Account, {where: {
         id: id
-    }})
+    }},)

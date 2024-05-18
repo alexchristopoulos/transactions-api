@@ -9,6 +9,4 @@ export class Account {
   @Column({ type: 'bigint' })
   balance!: number;
 
-  @Column({ type: 'date' })
-  createdAt!: Date;
 }

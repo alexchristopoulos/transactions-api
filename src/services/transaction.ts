@@ -16,7 +16,6 @@ export const transferMoney = async ({
   const { manager } = datasource;
 
   await manager.transaction(async (transactionalEntityManager) => {
-    // Lock source account row
     const sourceAccount = await transactionalEntityManager
       .createQueryBuilder(Account, 'account')
       .setLock('pessimistic_write')
@@ -31,7 +30,6 @@ export const transferMoney = async ({
       throw new Error('Insufficient balance in source account');
     }
 
-    // Lock target account row
     const targetAccount = await transactionalEntityManager
       .createQueryBuilder(Account, 'account')
       .setLock('pessimistic_write')
@@ -42,14 +40,15 @@ export const transferMoney = async ({
       throw new Error('Target account not found');
     }
 
-    // Update balances
+    sourceAccount.balance = Number(sourceAccount.balance);
+    targetAccount.balance = Number(targetAccount.balance);
+
     sourceAccount.balance -= amount;
     targetAccount.balance += amount;
 
     await transactionalEntityManager.save(sourceAccount);
     await transactionalEntityManager.save(targetAccount);
 
-    // Create transaction entry
     const transaction = new Transaction();
     transaction.sourceAccount = sourceAccount.id;
     transaction.targetAccount = targetAccount.id;
