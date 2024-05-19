@@ -1,10 +1,13 @@
-import { createAccountController, getAccountController } from 'controllers';
+import {
+  createAccountController,
+  getAccountController,
+  getAccountsSummaryController,
+} from 'controllers';
 import { Router } from 'express';
-import { getAccountsSummary } from 'services/account';
 
 const router: Router = Router();
 
-router.get('/', getAccountsSummary);
+router.get('/', getAccountsSummaryController);
 router.get('/:id', getAccountController);
 router.post('/', createAccountController);
 
