@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "41234b25-23d6-476d-a2ac-58142b05e6a0",
+		"_postman_id": "871468d0-111b-48fd-ba86-df05a08207f7",
 		"name": "bank-app",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "16394703"
+		"_exporter_id": "29927035"
 	},
 	"item": [
 		{
@@ -12,14 +12,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/account/09ca2004-465d-4acc-b885-7ac7a1237620",
+					"raw": "localhost:8080/account/9e0359e4-69b8-4ce4-8705-c64628b5d039",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"account",
-						"09ca2004-465d-4acc-b885-7ac7a1237620"
+						"9e0359e4-69b8-4ce4-8705-c64628b5d039"
 					]
 				}
 			},
@@ -32,7 +32,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"balance\": 500\r\n}",
+					"raw": "{\r\n    \"balance\": 2350\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -59,13 +59,49 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"targetAccountId\": \"09ca2004-465d-4acc-b885-7ac7a1237620\",\r\n    \"sourceAccountId\": \"0943fb2c-70fa-4562-b999-1a5fbb2c33aa\",\r\n    \"amount\": 250\r\n}",
+					"raw": "{\r\n    \"targetAccountId\": \"0d6223e2-b29d-4e83-94af-063ed1d57b49\",\r\n    \"sourceAccountId\": \"c9f9e3e1-72cb-4038-9970-3ed4f1d72cb0\",\r\n    \"amount\": 25\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
+				"url": {
+					"raw": "localhost:8080/transaction",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Accounts Summary",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/account",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
 				"url": {
 					"raw": "localhost:8080/transaction",
 					"host": [
