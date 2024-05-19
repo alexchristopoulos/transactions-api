@@ -33,29 +33,31 @@ under root folder of this repo you can find the file `bank-app.postman_collectio
 
 # API Endpoints
 
-## GET /transaction
+## GET /transaction (list of transactions)
 
-### Response example (list of transactions)
+### Response example
 
 ```
-[
-    {
+{
+    msg: "fetched transactions list",
+    data: [{
         "id": "6276a494-1447-4b94-b1cd-4705a5b9c44d",
         "sourceAccount": "9e0359e4-69b8-4ce4-8705-c64628b5d039",
         "targetAccount": "0d6223e2-b29d-4e83-94af-063ed1d57b49",
         "amount": "250",
         "date": "2024-05-19T07:01:26.078Z"
-    },
-]
+    }]
+}
 ```
 
-## GET /account
+## GET /account (list of accounts and sum of money)
 
-### Response example (list of accounts and sum of money)
+### Response example
 
 ```
 {
-  {
+  msg: "fetched accounts summary",
+  data: {
     "totalMoney": 5350,
     "accounts": [
         {
@@ -110,8 +112,11 @@ under root folder of this repo you can find the file `bank-app.postman_collectio
 
 ```
 {
-    "id": "9e0359e4-69b8-4ce4-8705-c64628b5d039",
-    "balance": "500"
+    msg: "fetched account",
+    data: {
+        "id": "9e0359e4-69b8-4ce4-8705-c64628b5d039",
+        "balance": "500"
+    }
 }
 ```
 

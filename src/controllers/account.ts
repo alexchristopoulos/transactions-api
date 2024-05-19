@@ -18,10 +18,16 @@ export const getAccountController = async (req: Request, res: Response) => {
   const { id } = req.params;
   const account = await getAccount({ id });
 
-  return res.status(200).json(account);
+  return res.status(200).json({
+    msg: "fetched account",
+    data: account
+  });
 };
 
 export const getAccountsSummaryController = async (
   req: Request,
   res: Response,
-) => res.status(200).json(await getAccountsSummary());
+) => res.status(200).json({
+  msg: "fetched accounts summary",
+  data: await getAccountsSummary()
+});
