@@ -1,6 +1,6 @@
 import { datasource } from 'db/dataSource';
-import { Account } from 'db/entities/account';
-import { Transaction } from 'db/entities/transactions';
+import { Account, Transaction } from 'db/entities';
+import { BadRequest, NotFoundError } from 'utils/errors';
 
 type TransferMoneyParams = {
   sourceAccountId: string;
@@ -23,11 +23,17 @@ export const transferMoney = async ({
       .getOne();
 
     if (!sourceAccount) {
-      throw new Error('Source account not found');
+      throw new NotFoundError(
+        'Source account not found',
+        'transfer.sourceAccount.notFound',
+      );
     }
 
     if (sourceAccount.balance < amount) {
-      throw new Error('Insufficient balance in source account');
+      throw new BadRequest(
+        'Insufficient balance in source account',
+        'transfer.sourceAccount.insufficientBalance',
+      );
     }
 
     const targetAccount = await transactionalEntityManager
@@ -37,7 +43,10 @@ export const transferMoney = async ({
       .getOne();
 
     if (!targetAccount) {
-      throw new Error('Target account not found');
+      throw new NotFoundError(
+        'Target account not found',
+        'transfer.targetAccount.notFound',
+      );
     }
 
     sourceAccount.balance = Number(sourceAccount.balance);

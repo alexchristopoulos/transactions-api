@@ -1,7 +1,4 @@
-import {
-  createAccountController,
-  getAccountController,
-} from 'controllers/account';
+import { createAccountController, getAccountController } from 'controllers';
 import { Router } from 'express';
 
 const router: Router = Router();
