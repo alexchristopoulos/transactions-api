@@ -1,26 +1,35 @@
-import { Check, Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Check,
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 import { Account } from './account';
 
 @Entity()
 @Check('"amount" > 0')
 export class Transaction {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id!: string;
 
   @Column({
-    type: "uuid"
+    type: 'uuid',
   })
-  @OneToOne(() => Account, (account => account.id))
+  @OneToOne(() => Account, (account) => account.id)
   sourceAccount!: string;
 
-
   @Column({
-    type: "uuid"
+    type: 'uuid',
   })
-  @OneToOne(() => Account, (account => account.id))
+  @OneToOne(() => Account, (account) => account.id)
   targetAccount!: string;
 
-  @Column({ type: "bigint" })
+  @Column({ type: 'bigint' })
   amount!: number;
+
+  @CreateDateColumn()
+  date!: Date;
 }

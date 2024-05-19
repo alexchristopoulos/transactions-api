@@ -24,3 +24,8 @@ export const getAccount = async ({ id }: GetAccountParams) =>
       id: id,
     },
   });
+
+export const getAccountsSummary = async () => ({
+  totalMoney: await manager.sum(Account, 'balance'),
+  accounts: await manager.find(Account),
+});

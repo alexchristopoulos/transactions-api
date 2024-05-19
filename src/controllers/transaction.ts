@@ -1,5 +1,5 @@
-import { Response } from 'express';
-import { transferMoney } from 'services/transaction';
+import { Request, Response } from 'express';
+import { getTransactions, transferMoney } from 'services';
 import { RequestWithBody } from 'utils/request';
 
 export const transactionController = async (
@@ -21,3 +21,6 @@ export const transactionController = async (
     msg: `Transferred ${amount} from ${sourceAccountId} to ${targetAccountId} successfully`,
   });
 };
+
+export const getTransactionsController = async (req: Request, res: Response) =>
+  res.status(200).json(await getTransactions());

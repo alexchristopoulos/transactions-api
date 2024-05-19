@@ -8,13 +8,15 @@ type TransferMoneyParams = {
   amount: number;
 };
 
+const { manager } = datasource;
+
+export const getTransactions = async () => await manager.find(Transaction);
+
 export const transferMoney = async ({
   amount,
   sourceAccountId,
   targetAccountId,
 }: TransferMoneyParams) => {
-  const { manager } = datasource;
-
   await manager.transaction(async (transactionalEntityManager) => {
     const sourceAccount = await transactionalEntityManager
       .createQueryBuilder(Account, 'account')
