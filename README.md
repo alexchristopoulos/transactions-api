@@ -1,3 +1,9 @@
+# Pre requisites
+
+- node.js
+- pnpm
+- docker
+
 # Instructions on how to run
 
 1. `pnpm install`
