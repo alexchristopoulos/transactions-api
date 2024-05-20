@@ -25,4 +25,5 @@ export const transactionController = async (
 export const getTransactionsController = async (req: Request, res: Response) =>
   res.status(200).json({
     msg: 'fetched transactions list',
-    data: await getTransactions()});
+    data: await getTransactions(),
+  });

@@ -18,8 +18,9 @@ datasource
   .then(() => {
     console.log('connected to db');
   })
-  .catch((err) => { 
-    console.error("failed to connect to db", err)
-    process.exit(1)});
+  .catch((err) => {
+    console.error('failed to connect to db', err);
+    process.exit(1);
+  });
 
 export default server;
